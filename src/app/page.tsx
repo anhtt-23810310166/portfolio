@@ -456,7 +456,7 @@ export default function Portfolio() {
                   </div>
                 </a>
 
-                <a href="https://linkedin.com/in/yourprofile" className="social-card">
+                <a href="https://www.linkedin.com/in/anh-tuan-tran-01695a281" className="social-card">
                   <div className="social-icon" style={{ background: 'rgba(37,99,235,0.08)' }}>
                     <Linkedin size={22} className="text-accent" />
                   </div>
