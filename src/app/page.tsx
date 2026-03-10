@@ -441,7 +441,6 @@ export default function Portfolio() {
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <p className="font-bold text-sm">Email</p>
-                    <p className="text-xs text-muted" style={{ wordBreak: 'break-all' }}>anhtt19012005@gmail.com</p>
                   </div>
                 </a>
 
@@ -451,7 +450,6 @@ export default function Portfolio() {
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <p className="font-bold text-sm">Zalo</p>
-                    <p className="text-xs text-muted">0969 861 303</p>
                   </div>
                 </a>
 
@@ -461,7 +459,6 @@ export default function Portfolio() {
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <p className="font-bold text-sm">LinkedIn</p>
-                    <p className="text-xs text-muted">Tuan Anh Tran</p>
                   </div>
                 </a>
 
@@ -471,7 +468,6 @@ export default function Portfolio() {
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <p className="font-bold text-sm">GitHub</p>
-                    <p className="text-xs text-muted">anhtt-23810310166</p>
                   </div>
                 </a>
               </div>
