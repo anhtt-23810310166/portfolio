@@ -250,7 +250,7 @@ export default function Portfolio() {
                 <div className="avatar-wrapper">
                   {!avatarError ? (
                     <img 
-                      src="/avatar.jpg" 
+                      src="/avatar.png" 
                       alt="Tuan Anh" 
                       onError={() => setAvatarError(true)}
                     />
