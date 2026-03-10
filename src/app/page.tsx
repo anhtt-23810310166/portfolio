@@ -22,6 +22,7 @@ import {
   ShoppingCart
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
@@ -249,9 +250,11 @@ export default function Portfolio() {
               <div className="flex justify-center order-1 md:order-2">
                 <div className="avatar-wrapper">
                   {!avatarError ? (
-                    <img 
-                      src="/avatar.png" 
+                    <Image 
+                      src="/avatar.jpg" 
                       alt="Tuan Anh" 
+                      width={400}
+                      height={400}
                       onError={() => setAvatarError(true)}
                     />
                   ) : (
