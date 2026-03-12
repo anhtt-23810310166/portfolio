@@ -125,6 +125,17 @@ nav.pill-nav a.active {
   height: 320px;
   border-radius: 50%;
   padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
   background: conic-gradient(
     from 0deg,
     var(--gradient-1),
@@ -133,7 +144,7 @@ nav.pill-nav a.active {
     var(--gradient-1)
   );
   animation: rotateGradient 4s linear infinite;
-  flex-shrink: 0;
+  z-index: -1;
 }
 
 .avatar-wrapper img {
@@ -142,6 +153,8 @@ nav.pill-nav a.active {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--background);
+  position: relative;
+  z-index: 1;
 }
 
 .avatar-fallback {
@@ -156,6 +169,8 @@ nav.pill-nav a.active {
   font-weight: 700;
   color: white;
   border: 4px solid var(--background);
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes rotateGradient {
