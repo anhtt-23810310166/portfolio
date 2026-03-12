@@ -99,7 +99,7 @@ export default function Portfolio() {
       github: "https://github.com/anhtt-23810310166/music-web-nestjs",
       demo: "https://musicbox-z696.vercel.app",
       featured: true,
-      icon: <Music size={40} className="text-muted" />
+      icon: <Image src="/musicbox.jpg" alt="MusicBox" width={400} height={200} className="w-full h-full object-cover" />
     },
     {
       title: "E-Commerce Backend",
@@ -108,7 +108,7 @@ export default function Portfolio() {
       github: "https://github.com/anhtt-23810310166/product-management-ssr-js",
       demo: "https://techzone-z696.onrender.com",
       featured: true,
-      icon: <ShoppingCart size={40} className="text-muted" />
+      icon: <Image src="/e-commerce.jpg" alt="E-Commerce" width={400} height={200} className="w-full h-full object-cover" />
     },
   ];
 
