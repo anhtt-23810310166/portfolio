@@ -31,7 +31,19 @@ export default function Portfolio() {
   const [activeExpTab, setActiveExpTab] = useState("work");
   const [typewriterText, setTypewriterText] = useState("");
   const [typewriterIndex, setTypewriterIndex] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const [avatarError, setAvatarError] = useState(false);
+
+  // Auto-hide contact form status message
+  useEffect(() => {
+    if (submitStatus) {
+      const timer = setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   const roles = ["Backend Developer", "NodeJS Developer", "Software Engineer"];
   const [roleIndex, setRoleIndex] = useState(0);
@@ -82,86 +94,50 @@ export default function Portfolio() {
     }
   }, [typewriterIndex, roleIndex]);
 
-  const navLinks = [
-    { name: "Home", href: "#home", id: "home", icon: <Home size={15} /> },
-    { name: "About", href: "#about", id: "about", icon: <User size={15} /> },
-    { name: "Experience", href: "#experience", id: "experience", icon: <Briefcase size={15} /> },
-    { name: "Project", href: "#projects", id: "projects", icon: <FolderOpen size={15} /> },
-    { name: "Skill", href: "#skills", id: "skills", icon: <Wrench size={15} /> },
-    { name: "Contact", href: "#contact", id: "contact", icon: <Mail size={15} /> },
-  ];
-
-  const projects = [
-    {
-      title: "Audio Streaming Platform",
-      description: "A streaming platform built with a Modular Monolith architecture, optimizing relational data queries and system security.",
-      tech: ["NestJS", "Prisma", "PostgreSQL", "Docker", "JWT"],
-      github: "https://github.com/anhtt-23810310166/music-web-nestjs",
-      demo: "https://musicbox-z696.vercel.app",
-      featured: true,
-      icon: <Image src="/musicbox.jpg" alt="MusicBox" width={400} height={200} className="w-full h-full object-cover" />
-    },
-    {
-      title: "E-Commerce Backend",
-      description: "A complete e-commerce system using MVC-S architecture, integrating online payments and a detailed internal management system.",
-      tech: ["Node.js", "Express", "MongoDB", "Socket.io", "VNPAY"],
-      github: "https://github.com/anhtt-23810310166/product-management-ssr-js",
-      demo: "https://techzone-z696.onrender.com",
-      featured: true,
-      icon: <Image src="/e-commerce.jpg" alt="E-Commerce" width={400} height={200} className="w-full h-full object-cover" />
-    },
-  ];
-
-  const skillGroups: Record<string, { name: string; badge?: string; badgeColor?: string }[]> = {
+  const skillGroups: Record<string, { name: string; color: string }[]> = {
     language: [
-      { name: "TypeScript", badge: "Primary", badgeColor: "bg-blue-100 text-blue-800 border-blue-300" },
-      { name: "JavaScript", badge: "Core", badgeColor: "bg-yellow-100 text-yellow-800 border-yellow-300" },
-      { name: "C#", badge: "DotNet", badgeColor: "bg-purple-100 text-purple-800 border-purple-300" },
-      { name: "Java", badge: "OOP", badgeColor: "bg-orange-100 text-orange-800 border-orange-300" },
-      { name: "Python", badge: "Scripting", badgeColor: "bg-blue-100 text-blue-800 border-blue-300" },
-      { name: "PHP", badge: "Web Language", badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-300" },
-      { name: "C/C++", badge: "Core", badgeColor: "bg-gray-100 text-gray-800 border-gray-300" },
-      { name: "SQL", badge: "Database", badgeColor: "bg-indigo-100 text-indigo-700 border-indigo-200" },
-    ],
-    frontend: [
-      { name: "React", badge: "Library", badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-300" },
-      { name: "Next.js", badge: "Framework", badgeColor: "bg-slate-100 text-slate-800 border-slate-300" },
-      { name: "HTML/CSS", badge: "Foundation", badgeColor: "bg-orange-100 text-orange-800 border-orange-300" },
-      { name: "SASS/SCSS", badge: "Preproc", badgeColor: "bg-pink-100 text-pink-800 border-pink-300" },
-      { name: "Bootstrap", badge: "UI Lib", badgeColor: "bg-purple-100 text-purple-800 border-purple-300" },
-      { name: "MUI/AntD", badge: "UI Lib", badgeColor: "bg-blue-100 text-blue-800 border-blue-300" },
-      { name: "React Native", badge: "Mobile", badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-300" },
-      { name: "Tailwind CSS", badge: "Styling", badgeColor: "bg-teal-100 text-teal-800 border-teal-300" },
-      { name: "Redux", badge: "State", badgeColor: "bg-purple-100 text-purple-800 border-purple-300" },
+      { name: "TypeScript", color: "#3178c6" },
+      { name: "JavaScript", color: "#f7df1e" },
+      { name: "C#", color: "#239120" },
+      { name: "Java", color: "#007396" },
+      { name: "Python", color: "#3776ab" },
+      { name: "PHP", color: "#777bb4" },
+      { name: "C/C++", color: "#00599c" },
+      { name: "SQL", color: "#4479a1" },
     ],
     backend: [
-      { name: "ASP.NET Core", badge: "Framework", badgeColor: "bg-purple-100 text-purple-800 border-purple-300" },
-      { name: "Node.js", badge: "Runtime", badgeColor: "bg-green-100 text-green-700 border-green-200" },
-      { name: "NestJS", badge: "Core Skill", badgeColor: "bg-red-100 text-red-700 border-red-200" },
-      { name: "Express", badge: "API", badgeColor: "bg-gray-100 text-gray-700 border-gray-200" },
-      { name: "Microservices", badge: "Architecture", badgeColor: "bg-sky-100 text-sky-800 border-sky-300" },
-      { name: "RESTful API", badge: "Architecture", badgeColor: "bg-purple-100 text-purple-700 border-purple-200" },
-      { name: "GraphQL", badge: "Query", badgeColor: "bg-pink-100 text-pink-700 border-pink-200" },
-      { name: "Socket.io", badge: "Realtime", badgeColor: "bg-zinc-100 text-zinc-700 border-zinc-200" },
-      { name: "WordPress", badge: "CMS", badgeColor: "bg-blue-100 text-blue-800 border-blue-300" },
+      { name: "NestJS", color: "#e0234e" },
+      { name: "Node.js", color: "#339933" },
+      { name: "ASP.NET Core", color: "#512bd4" },
+      { name: "Microservices", color: "#000000" },
+      { name: "RESTful API", color: "#0055ff" },
+      { name: "GraphQL", color: "#e10098" },
+      { name: "Socket.io", color: "#010101" },
+      { name: "JWT / RBAC", color: "#000000" },
     ],
     database: [
-      { name: "PostgreSQL", badge: "Relational", badgeColor: "bg-blue-100 text-blue-700 border-blue-200" },
-      { name: "MySQL", badge: "Relational", badgeColor: "bg-orange-100 text-orange-700 border-orange-200" },
-      { name: "MongoDB", badge: "NoSQL", badgeColor: "bg-green-100 text-green-700 border-green-200" },
-      { name: "Redis", badge: "Cache", badgeColor: "bg-red-100 text-red-700 border-red-200" },
-      { name: "Prisma", badge: "ORM", badgeColor: "bg-slate-100 text-slate-700 border-slate-200" },
-      { name: "TypeORM", badge: "ORM", badgeColor: "bg-red-100 text-red-800 border-red-300" },
-      { name: "Sequelize", badge: "ORM", badgeColor: "bg-blue-100 text-blue-800 border-blue-300" },
-      { name: "Mongoose", badge: "ODM", badgeColor: "bg-green-100 text-green-800 border-green-300" },
+      { name: "PostgreSQL", color: "#4169e1" },
+      { name: "MySQL", color: "#4479a1" },
+      { name: "MongoDB", color: "#47a248" },
+      { name: "Redis", color: "#dc382d" },
+      { name: "Prisma", color: "#2d3748" },
+      { name: "TypeORM / Sequelize", color: "#2b3b4b" },
+    ],
+    frontend: [
+      { name: "Next.js", color: "#000000" },
+      { name: "React", color: "#61dafb" },
+      { name: "React Native", color: "#61dafb" },
+      { name: "Tailwind CSS", color: "#06b6d4" },
+      { name: "MUI / AntD", color: "#007fff" },
+      { name: "HTML/CSS", color: "#e34f26" },
     ],
     devtools: [
-      { name: "Docker", badge: "Container", badgeColor: "bg-blue-100 text-blue-700 border-blue-200" },
-      { name: "Git Flow", badge: "VCS", badgeColor: "bg-orange-100 text-orange-700 border-orange-200" },
-      { name: "AWS", badge: "Cloud", badgeColor: "bg-yellow-100 text-yellow-800 border-yellow-300" },
-      { name: "Linux", badge: "OS", badgeColor: "bg-zinc-100 text-zinc-800 border-zinc-300" },
-      { name: "Postman", badge: "API Tool", badgeColor: "bg-orange-100 text-orange-700 border-orange-200" },
-      { name: "JWT/RBAC", badge: "Security", badgeColor: "bg-indigo-100 text-indigo-700 border-indigo-200" },
+      { name: "Docker", color: "#2496ed" },
+      { name: "Git Flow", color: "#f05032" },
+      { name: "AWS", color: "#ff9900" },
+      { name: "Linux", color: "#fcc624" },
+      { name: "Postman", color: "#ff6c37" },
+      { name: "WordPress", color: "#21759b" },
     ],
   };
 
@@ -192,6 +168,36 @@ export default function Portfolio() {
       school: "Electric Power University (EPU)",
       period: "2024 - 2028 (Expected)",
       gpa: "3.24 / 4.0",
+    },
+  ];
+
+  const navLinks = [
+    { name: "Home", href: "#home", id: "home", icon: <Home size={15} /> },
+    { name: "About", href: "#about", id: "about", icon: <User size={15} /> },
+    { name: "Experience", href: "#experience", id: "experience", icon: <Briefcase size={15} /> },
+    { name: "Projects", href: "#projects", id: "projects", icon: <FolderOpen size={15} /> },
+    { name: "Skills", href: "#skills", id: "skills", icon: <Wrench size={15} /> },
+    { name: "Contact", href: "#contact", id: "contact", icon: <Mail size={15} /> },
+  ];
+
+  const projects = [
+    {
+      title: "Audio Streaming Platform",
+      description: "A streaming platform built with a Modular Monolith architecture, optimizing relational data queries and system security.",
+      tech: ["NestJS", "Prisma", "PostgreSQL", "Docker", "JWT"],
+      github: "https://github.com/anhtt-23810310166/music-web-nestjs",
+      demo: "https://musicbox-z696.vercel.app",
+      featured: true,
+      icon: <Image src="/musicbox.jpg" alt="MusicBox" width={400} height={200} className="w-full h-full object-cover" />
+    },
+    {
+      title: "E-Commerce Backend",
+      description: "A complete e-commerce system using MVC-S architecture, integrating online payments and a detailed internal management system.",
+      tech: ["Node.js", "Express", "MongoDB", "Socket.io", "VNPAY"],
+      github: "https://github.com/anhtt-23810310166/product-management-ssr-js",
+      demo: "https://techzone-z696.onrender.com",
+      featured: true,
+      icon: <Image src="/e-commerce.jpg" alt="E-Commerce" width={400} height={200} className="w-full h-full object-cover" />
     },
   ];
 
@@ -233,7 +239,7 @@ export default function Portfolio() {
                   </p>
                 </div>
                 <p className="text-muted leading-relaxed text-base max-w-lg">
-                  Software Engineering student at Electric Power University, highly passionate about building stable and optimized backend systems using Modular Monolith architecture.
+                  Software Engineering student focused on backend development. I build APIs and backend systems using Node.js, NestJS and PostgreSQL.
                 </p>
                 <p className="text-sm text-muted flex items-center gap-2">
                   <MapPin size={16} className="text-red-500" /> Hanoi, Vietnam
@@ -275,10 +281,10 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div className="space-y-5">
                 <p className="text-base leading-relaxed">
-                  I am a Software Engineering student at Electric Power University. I am passionate about building stable and highly optimized backend systems. I always focus on writing clean, maintainable code and solving complex technical challenges using Modular Monolith architecture.
+                  I am particularly interested in how backend systems are designed and how different components interact in modern web applications. I enjoy learning about API architecture, database design and system scalability.
                 </p>
-                <p className="text-base leading-relaxed">
-                  Beyond my academic studies, I continuously build personal projects to hone my practical skills and stay up-to-date with the latest technologies in Backend Development.
+                <p className="text-base leading-relaxed text-muted">
+                  My goal is to continuously improve my backend engineering skills and gain experience building reliable and maintainable software systems.
                 </p>
               </div>
               <div className="space-y-6">
@@ -416,13 +422,18 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
               {(skillGroups[activeSkillTab] || []).map((skill) => (
-                <div key={skill.name} className="skill-card aspect-square w-[140px] flex flex-col items-center justify-center text-center group">
-                  <div className="skill-icon mb-3 w-12 h-12 text-lg transition-transform group-hover:scale-110">
+                <div 
+                  key={skill.name} 
+                  className="skill-card min-w-[160px]"
+                  style={{ '--hover-bg': skill.color } as any}
+                >
+                  <div className="skill-glow" />
+                  <div className="skill-icon">
                     {skill.name.substring(0, 2).toUpperCase()}
                   </div>
-                  <h3 className="font-bold text-sm px-2">{skill.name}</h3>
+                  <h3>{skill.name}</h3>
                 </div>
               ))}
             </div>
@@ -478,24 +489,51 @@ export default function Portfolio() {
               {/* Contact Form */}
               <form 
                 className="contact-form space-y-4" 
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
+                  setIsSubmitting(true);
+                  setSubmitStatus(null);
+                  
                   const form = e.target as HTMLFormElement;
-                  const name = (form.elements.namedItem('name') as HTMLInputElement).value;
-                  const email = (form.elements.namedItem('email') as HTMLInputElement).value;
-                  const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
-                  
-                  const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-                  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-                  
-                  window.location.href = `mailto:anhtt19012005@gmail.com?subject=${subject}&body=${body}`;
+                  const formData = {
+                    name: (form.elements.namedItem('name') as HTMLInputElement).value,
+                    email: (form.elements.namedItem('email') as HTMLInputElement).value,
+                    message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+                  };
+
+                  try {
+                    const res = await fetch('/api/contact', {
+                      method: 'POST',
+                      body: JSON.stringify(formData),
+                    });
+                    
+                    const result = await res.json();
+                    
+                    if (res.ok) {
+                      setSubmitStatus({ type: 'success', message: result.message || 'Message sent successfully!' });
+                      form.reset();
+                    } else {
+                      throw new Error(result.error || 'Failed to send. Please try again.');
+                    }
+                  } catch (err: any) {
+                    setSubmitStatus({ type: 'error', message: err.message || 'Failed to send. Please try again.' });
+                  } finally {
+                    setIsSubmitting(false);
+                  }
                 }}
               >
                 <input type="text" name="name" placeholder="Your Name *" required />
                 <input type="email" name="email" placeholder="Email Address *" required />
                 <textarea name="message" placeholder="Your message..." rows={4}></textarea>
-                <button type="submit" className="btn-send">
-                  Send Message
+                
+                {submitStatus && (
+                  <div className={`p-3 rounded-lg text-sm font-medium ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <button type="submit" className="btn-send" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

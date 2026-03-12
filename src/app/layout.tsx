@@ -14,8 +14,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Minimalist IT Student Portfolio",
-  description: "A clean and professional portfolio for an aspiring software engineer.",
+  title: "Tuan Anh | Backend Developer Portfolio",
+  description: "Software Engineering student at Electric Power University, passionate about building optimized backend systems using Modular Monolith architecture.",
+  keywords: ["Tuan Anh", "Backend Developer", "NodeJS", "NestJS", "Software Engineer Portfolio", "EPU Student"],
+  authors: [{ name: "Tuan Anh" }],
+  openGraph: {
+    title: "Tuan Anh | Backend Developer Portfolio",
+    description: "Building robust systems with NestJS, PostgreSQL, and Docker.",
+    url: "https://your-portfolio-url.com",
+    siteName: "Tuan Anh Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
