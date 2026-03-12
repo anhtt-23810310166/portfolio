@@ -289,7 +289,7 @@ export default function Portfolio() {
                   </div>
                   <h4 className="font-bold">Software Engineering</h4>
                   <p className="text-muted text-sm">Electric Power University (EPU)</p>
-                  <p className="text-sm font-medium mt-1">2024 - 2028 (Expected)</p>
+                  <p className="text-sm font-medium mt-1">2023 - 2028 (Expected)</p>
                   <div className="mt-3 inline-block px-3 py-1 text-xs font-bold rounded-full border" style={{ borderColor: 'var(--accent)', color: 'var(--accent)', background: 'rgba(37,99,235,0.06)' }}>
                     GPA: 3.24 / 4.0
                   </div>
