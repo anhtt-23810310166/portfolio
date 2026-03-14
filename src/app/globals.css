@@ -250,7 +250,7 @@ nav.pill-nav a.active {
 
 .project-card .card-image {
   width: 100%;
-  height: 200px;
+  height: 160px;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
   display: flex;
@@ -263,7 +263,7 @@ nav.pill-nav a.active {
 }
 
 .project-card .card-body {
-  padding: 20px;
+  padding: 16px;
   flex: 1;
   display: flex;
   flex-direction: column;

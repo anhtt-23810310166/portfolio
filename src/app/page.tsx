@@ -199,6 +199,15 @@ export default function Portfolio() {
       featured: true,
       icon: <Image src="/e-commerce.jpg" alt="E-Commerce" width={400} height={200} className="w-full h-full object-cover" />
     },
+    {
+      title: "AI Resume Builder",
+      description: "An online resume builder application that allows users to create professional CVs, customize templates, and export them as high-quality PDF files.",
+      tech: ["Next.js", "NestJS", "PostgreSQL", "TypeORM", "Docker"],
+      github: "https://github.com/anhtt-23810310166/resume-builder",
+      demo: "https://resume-builder-z696.vercel.app",
+      featured: true,
+      icon: <Image src="/resume-builder.jpg" alt="Resume Builder" width={400} height={200} className="w-full h-full object-cover" />
+    },
   ];
 
   const scrollToTop = () => {
@@ -370,7 +379,7 @@ export default function Portfolio() {
             <h2 className="section-title text-3xl md:text-4xl font-bold">My Projects</h2>
             <p className="section-subtitle">Explore the innovative projects and technology solutions I have developed</p>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {projects.map((project, idx) => (
                 <div key={idx} className={`project-card ${project.featured ? "featured" : ""}`}>
                   {project.featured && (
