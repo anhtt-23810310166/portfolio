@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💻 Personal Portfolio - Tuan Anh (Software Engineer)
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/frontend-Next.js%2015-000000?style=flat-square&logo=nextdotjs)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/language-TypeScript%205-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Vanilla CSS](https://img.shields.io/badge/styling-Vanilla%20CSS-1572B6?style=flat-square&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Lucide Icons](https://img.shields.io/badge/icons-Lucide-FDE047?style=flat-square&logo=lucide)](https://lucide.dev/)
 
-First, run the development server:
+Trang Portfolio cá nhân giới thiệu về bản thân, kỹ năng và các dự án tâm huyết của mình. Được xây dựng với tiêu chí: Tốc độ, Trải nghiệm người dùng tốt và Giao diện hiện đại.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🌟 Tính Năng Nổi Bật
+
+### 🎨 Trải Nghiệm Người Dùng
+- **Giao diện Hiện đại**: Sử dụng Modern UI với các hiệu ứng mượt mà (Typewriter effect, Hover animations, Scroll animations).
+- **Dark/Light Mode**: Tích hợp trình chuyển đổi giao diện (Theme Toggle) linh hoạt.
+- **Pill Navigation**: Thanh điều hướng dạng "Pill" trôi nổi, tự động cập nhật theo vị trí cuộn (Scroll Spy).
+- **Responsive Design**: Tối ưu hoàn toàn cho mọi thiết bị từ Mobile, Tablet đến Desktop.
+- **Project Showcase**: Hiển thị danh sách dự án với lưới 3 cột (Desktop), đầy đủ thông tin về công nghệ và link demo/github.
+
+### ⚙️ Kỹ Thuật
+- **Next.js App Router**: Tận dụng tối đa sức mạnh của Next.js 15 cho hiệu suất tải trang cực nhanh.
+- **Vanilla CSS**: Không sử dụng CSS framework (như Tailwind), tập trung vào việc tùy chỉnh chi tiết từng pixel và tối ưu bundle size.
+- **Typewriter Effect**: Hiệu ứng chữ chạy sinh động giới thiệu về vai trò của bản thân.
+- **Contact Form**: Form liên hệ tích hợp gửi mail, xử lý trạng thái gửi thời gian thực.
+
+---
+
+## 🛠 Tech Stack
+
+| Thành phần | Công nghệ sử dụng |
+| :--- | :--- |
+| **Framework** | Next.js 15 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Vanilla CSS, CSS Variables |
+| **Icons** | Lucide-react |
+| **Animation** | Intersection Observer API, CSS Keyframes |
+| **Deployment** | Vercel |
+
+---
+
+## 🏗️ Cấu Trúc Dự Án
+
+```
+portfolio/
+├── src/
+│   ├── app/                # Next.js App Router (Layout, Page, Global CSS)
+│   ├── components/         # Các thành phần giao diện (ThemeToggle, Nav...)
+│   └── ...
+├── public/                 # Tài nguyên tĩnh (Ảnh dự án, Avatar, Icons)
+└── package.json            # Cấu hình dự án và dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Hướng Dẫn Cài Đặt
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Yêu Cầu Hệ Thống
+- Node.js >= 18.x
 
-## Learn More
+### 2. Các bước triển khai
+```bash
+# Di chuyển vào thư mục portfolio
+cd portfolio
 
-To learn more about Next.js, take a look at the following resources:
+# Cài đặt thư viện
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Chạy ở chế độ phát triển
+npm run dev
+```
+*Trang web sẽ chạy tại: `http://localhost:3000`*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📁 Lệnh CLI Hữu Ích
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Lệnh | Mô tả |
+| :--- | :--- |
+| `npm run build` | Build dự án cho production |
+| `npm run lint` | Kiểm tra lỗi coding style |
+| `npm run start` | Chạy ứng dụng đã build |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔗 Liên Hệ
+
+- **Website**: [https://tuananh-portfolio.vercel.app](https://tuananh-portfolio.vercel.app)
+- **Email**: anhtt19012005@gmail.com
+- **LinkedIn**: [Anh Tuan Tran](https://www.linkedin.com/in/anh-tuan-tran-01695a281)
+
+---
+**Developed by Tuan Anh ❤️**
