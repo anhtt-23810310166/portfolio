@@ -118,6 +118,30 @@ nav.pill-nav a.active {
   font-weight: 600 !important;
 }
 
+.theme-toggle-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 9999px !important;
+  color: var(--muted) !important;
+  transition: all 0.25s ease !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--foreground) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
 /* ===== AVATAR GRADIENT BORDER ===== */
 .avatar-wrapper {
   position: relative;
